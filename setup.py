@@ -6,7 +6,7 @@ with open("README.md", "r") as ld:
     long_description = ld.read()
 
 setuptools.setup(
-    name="pycot",
+    name="pycot-reports",
     version=__version__,
     packages=["pycot"],
     include_package_data=True,

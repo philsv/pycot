@@ -5,7 +5,7 @@ pycot is a easy to use python library for interacting with the [CFTC Commitment 
 ## Installation
 
 ```ini
-pip install pycot
+pip install pycot-reports
 ```
 
 ## Requirements
