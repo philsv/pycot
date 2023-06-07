@@ -1,0 +1,62 @@
+{
+    "legacy_fut": {
+        "legacy": {
+            "url": "https://cftc.gov/files/dea/history/deacot1986_2016.zip",
+            "text_file": "FUT86_16.txt"
+        },
+        "current": {
+            "url": "https://www.cftc.gov/files/dea/history/deacot",
+            "text_file": "annual.txt"
+        }
+    },
+    "legacy_futopt": {
+        "legacy": {
+            "url": "https://cftc.gov/files/dea/history/deahistfo_1995_2016.zip",
+            "text_file": "Com95_16.txt"
+        },
+        "current": {
+            "url": "https://www.cftc.gov/files/dea/history/deahistfo",
+            "text_file": "annualof.txt"
+        }
+    },
+    "disaggregated_fut": {
+        "legacy": {
+            "url": "https://cftc.gov/files/dea/history/fut_disagg_txt_hist_2006_2016.zip",
+            "text_file": "F_Disagg06_16.txt"
+        },
+        "current": {
+            "url": "https://www.cftc.gov/files/dea/history/fut_disagg_txt_",
+            "text_file": "f_year.txt"
+        }
+    },
+    "disaggregated_futopt": {
+        "legacy": {
+            "url": "https://cftc.gov/files/dea/history/com_disagg_txt_hist_2006_2016.zip",
+            "text_file": "C_Disagg06_16.txt"
+        },
+        "current": {
+            "url": "https://www.cftc.gov/files/dea/history/com_disagg_txt_",
+            "text_file": "c_year.txt"
+        }
+    },
+    "traders_in_financial_futures_fut": {
+        "legacy": {
+            "url": "https://cftc.gov/files/dea/history/fin_fut_txt_2006_2016.zip",
+            "text_file": "F_TFF_2006_2016.txt"
+        },
+        "current": {
+            "url": "https://www.cftc.gov/files/dea/history/fut_fin_txt_",
+            "text_file": "FinFutYY.txt"
+        }
+    },
+    "traders_in_financial_futures_futopt": {
+        "legacy": {
+            "url": "https://cftc.gov/files/dea/history/fin_com_txt_2006_2016.zip",
+            "text_file": "C_TFF_2006_2016.txt"
+        },
+        "current": {
+            "url": "https://www.cftc.gov/files/dea/history/com_fin_txt_",
+            "text_file": "FinComYY.txt"
+        }
+    }
+}

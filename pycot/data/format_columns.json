@@ -1,0 +1,50 @@
+{
+    "legacy_format": {
+        "Contract Name": "Market and Exchange Names",
+        "Date": "As of Date in Form YYYY-MM-DD",
+        "Open Interest": "Open Interest (All)",
+        "Noncommercial Long": "Noncommercial Positions-Long (All)",
+        "Noncommercial Short": "Noncommercial Positions-Short (All)",
+        "Open Interest, Change": "Change in Open Interest (All)",
+        "Noncommercial Long, Change": "Change in Noncommercial-Long (All)",
+        "Noncommercial Short, Change": "Change in Noncommercial-Short (All)",
+        "Noncommercial Long, % of OI": "% of OI-Noncommercial-Long (All)",
+        "Noncommercial Short, % of OI": "% of OI-Noncommercial-Short (All)"
+    },
+    "disaggregated_format": {
+        "Contract Name": "Market_and_Exchange_Names",
+        "Date": "Report_Date_as_YYYY-MM-DD",
+        "Open Interest": "Open_Interest_All",
+        "Other Reportable Long": "Other_Rept_Positions_Long_All",
+        "Other Reportable Short": "Other_Rept_Positions_Short_All",
+        "Managed Money Long": "M_Money_Positions_Long_All",
+        "Managed Money Short": "M_Money_Positions_Short_All",
+        "Open Interest, Change": "Change_in_Open_Interest_All",
+        "Other Reportable Long, Change": "Change_in_Other_Rept_Long_All",
+        "Other Reportable Short, Change": "Change_in_Other_Rept_Short_All",
+        "Managed Money Long, Change": "Change_in_M_Money_Long_All",
+        "Managed Money Short, Change": "Change_in_M_Money_Short_All",
+        "Other Reportable Long, % of OI": "Pct_of_OI_Other_Rept_Long_All",
+        "Other Reportable Short, % of OI": "Pct_of_OI_Other_Rept_Short_All",
+        "Managed Money Long, % of OI": "Pct_of_OI_M_Money_Long_All",
+        "Managed Money Short, % of OI": "Pct_of_OI_M_Money_Short_All"
+    },
+    "traders_in_financial_futures_format": {
+        "Contract Name": "Market_and_Exchange_Names",
+        "Date": "Report_Date_as_YYYY-MM-DD",
+        "Open Interest": "Open_Interest_All",
+        "Asset Manager Long": "Asset_Mgr_Positions_Long_All",
+        "Asset Manager Short": "Asset_Mgr_Positions_Short_All",
+        "Leveraged Money Long": "Lev_Money_Positions_Long_All",
+        "Leveraged Money Short": "Lev_Money_Positions_Short_All",
+        "Open Interest, Change": "Change_in_Open_Interest_All",
+        "Asset Manager Long, Change": "Change_in_Asset_Mgr_Long_All",
+        "Asset Manager Short, Change": "Change_in_Asset_Mgr_Short_All",
+        "Leveraged Money Long, Change": "Change_in_Lev_Money_Long_All",
+        "Leveraged Money Short, Change": "Change_in_Lev_Money_Short_All",
+        "Asset Manager Long, % of OI": "Pct_of_OI_Asset_Mgr_Long_All",
+        "Asset Manager Short, % of OI": "Pct_of_OI_Asset_Mgr_Short_All",
+        "Leveraged Money Long, % of OI": "Pct_of_OI_Lev_Money_Long_All",
+        "Leveraged Money Short, % of OI": "Pct_of_OI_Lev_Money_Short_All"
+    }
+}
