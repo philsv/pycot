@@ -86,7 +86,6 @@ df = financial_report("traders_in_financial_futures_fut", contract_name)
 Output Example:
 
 ```ini
-df
                                                 Contract Name  Open Interest   ...  Net Change Lev Money  Net % of OI Lev Money
 Date                                                                           ...                                                                                            
 2023-07-11              UST 10Y NOTE - CHICAGO BOARD OF TRADE      4800091.0   ...              155532.0                  -26.8
