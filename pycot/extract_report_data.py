@@ -69,7 +69,7 @@ class COT:
         text_file: str,
     ) -> pd.DataFrame:
         """
-        Unzips the a text file from an archive and returns a pandas DataFrame.
+        Unzips the text file from an archive and returns a pandas DataFrame.
         """
         with tempfile.TemporaryDirectory() as tmpdirname:
             os.chdir(tmpdirname)  # change working directory to temp directory
