@@ -1,5 +1,11 @@
 # pycot
 
+[![PyPI Version](https://badge.fury.io/py/pycot-reports.svg)](https://badge.fury.io/py/pycot-reports)
+[![License: MIT](https://img.shields.io/badge/License-MIT-red.svg)](https://github.com/philsv/pycot/blob/main/LICENSE)
+[![Weekly Downloads](https://static.pepy.tech/personalized-badge/pycot-reports?period=week&units=international_system&left_color=grey&right_color=blue&left_text=downloads/week)](https://pepy.tech/project/pycot-reports)
+[![Monthly Downloads](https://static.pepy.tech/personalized-badge/pycot-reports?period=month&units=international_system&left_color=grey&right_color=blue&left_text=downloads/month)](https://pepy.tech/project/pycot-reports)
+[![Downloads](https://static.pepy.tech/personalized-badge/pycot-reports?period=total&units=international_system&left_color=grey&right_color=blue&left_text=downloads)](https://pepy.tech/project/pycot-reports)
+
 pycot is a easy to use python library for interacting with the [CFTC Commitment of Traders](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm) reports.
 
 ## Installation
