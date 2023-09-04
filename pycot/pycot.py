@@ -1,9 +1,9 @@
-import pandas as pd
-import numpy as np
 from functools import lru_cache
 
-from extract_report_data import COT, get_formating_data
+import numpy as np
+import pandas as pd
 from exceptions import InvalidReportType
+from extract_report_data import COT, get_formating_data
 
 
 def format_dataframe(
