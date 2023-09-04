@@ -1,15 +1,14 @@
 import io
 import json
 import os
+import tempfile
 import zipfile
 from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
-import tempfile
 
 import pandas as pd
 import requests
-
 from exceptions import InvalidReportType
 
 BASE_PATH = Path(__file__).parent.parent
