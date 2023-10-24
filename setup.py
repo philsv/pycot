@@ -10,6 +10,7 @@ setuptools.setup(
     version=__version__,
     packages=["pycot"],
     include_package_data=True,
+    package_data={"pycot": ["data/*"]},
     install_requires=["pandas", "requests", "python-dotenv"],
     url="https://github.com/philsv/pycot",
     license="MIT",
