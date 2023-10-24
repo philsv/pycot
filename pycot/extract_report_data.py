@@ -9,7 +9,8 @@ from pathlib import Path
 
 import pandas as pd
 import requests
-from exceptions import InvalidReportType
+
+from pycot.exceptions import InvalidReportType
 
 BASE_PATH = Path(__file__).parent.parent
 

@@ -22,7 +22,7 @@ pip install pycot-reports
 ## How to use
 
 ```python
-from pycot import legacy_report, disaggregated_report, financial_report
+from pycot.reports import legacy_report, disaggregated_report, financial_report
 ```
 
 Lets have a look at some examples.
@@ -30,7 +30,7 @@ Lets have a look at some examples.
 ### Legacy Report (All Contracts)
 
 ```python
-from pycot import legacy_report
+from pycot.reports import legacy_report
 contract_name = ("FED FUNDS - CHICAGO BOARD OF TRADE", "30-DAY FEDERAL FUNDS - CHICAGO BOARD OF TRADE")
 df = legacy_report("legacy_fut", contract_name)
 ```
@@ -57,7 +57,7 @@ Date                                                                      ...
 ### Disaggregated Report (Commodities)
 
 ```python
-from pycot import disaggregated_report
+from pycot.reports import disaggregated_report
 contract_name = ("BRENT LAST DAY - NEW YORK MERCANTILE EXCHANGE", "BRENT CRUDE OIL LAST DAY - NEW YORK MERCANTILE EXCHANGE")
 df = disaggregated_report("disaggregated_futopt", contract_name)
 ```
@@ -84,7 +84,7 @@ Date                                                                           .
 ### Financial Report (Financial Instruments)
 
 ```python
-from pycot import financial_report
+from pycot.reports import financial_report
 contract_name = ("UST 10Y NOTE - CHICAGO BOARD OF TRADE", "10-YEAR U.S. TREASURY NOTES - CHICAGO BOARD OF TRADE", "10 YEAR U.S. TREASURY NOTES - CHICAGO BOARD OF TRADE")
 df = financial_report("traders_in_financial_futures_fut", contract_name)
 ```
