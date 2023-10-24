@@ -1,42 +1,10 @@
 from functools import lru_cache
 
-import numpy as np
 import pandas as pd
-from exceptions import InvalidReportType
-from extract_report_data import COT, get_formating_data
 
-
-def format_dataframe(
-    data: pd.DataFrame,
-    names: list,
-    columns: list,
-) -> pd.DataFrame:
-    """
-    Helper function to format the data retrieved from the CFTC website.
-    """
-    df = data.reindex(columns=columns)  # Limit the columns to the ones we need (please adjust to your liking in format_columns.json)
-    df.rename(columns=dict(zip(columns, names)), inplace=True)
-    df["Date"] = pd.to_datetime(df["Date"])
-    df.set_index(["Date", "Contract Name"], inplace=True)
-    df.replace(".", np.nan, inplace=True)
-    df = df.astype(float)
-    df.reset_index(inplace=True)
-    df.set_index("Date", inplace=True)
-    return df
-
-
-def get_contract(
-    df: pd.DataFrame,
-    contract_name: str | tuple,
-) -> pd.DataFrame:
-    """
-    Retrieves the Commitment of Traders Reports data for a specific contract or list of contracts.
-    """
-    if isinstance(contract_name, str):
-        return df[df["Contract Name"] == contract_name]
-
-    data = [df[df["Contract Name"] == contract] for contract in contract_name if contract in df["Contract Name"].unique()]
-    return pd.concat(data)
+from pycot.exceptions import InvalidReportType
+from pycot.extract_report_data import COT, get_formating_data
+from pycot.utils import format_dataframe, get_contract
 
 
 @lru_cache
@@ -54,7 +22,7 @@ def legacy_report(
         A pandas DataFrame with the legacy futures Commitment of Traders data.
         
     Example:
-        >>> from pycot import legacy_report
+        >>> from pycot.reports import legacy_report
         >>> legacy_report("legacy_fut", ("FED FUNDS - CHICAGO BOARD OF TRADE", "30-DAY FEDERAL FUNDS - CHICAGO BOARD OF TRADE"))
     """
     if report_type not in ["legacy_fut", "legacy_futopt"]:
@@ -84,7 +52,7 @@ def disaggregated_report(
         A pandas DataFrame with the disaggregated futures and options report.
         
     Example:
-        >>> from pycot import disaggregated_report
+        >>> from pycot.reports import disaggregated_report
         >>> disaggregated_report("disaggregated_fut", ("BRENT LAST DAY - NEW YORK MERCANTILE EXCHANGE", "BRENT CRUDE OIL LAST DAY - NEW YORK MERCANTILE EXCHANGE"))
     """
     if report_type not in ["disaggregated_fut", "disaggregated_futopt"]:
@@ -121,7 +89,7 @@ def financial_report(
         A pandas DataFrame with the financial futures and options report.
         
     Example:
-        >>> from pycot import financial_report
+        >>> from pycot.reports import financial_report
         >>> financial_report("financial_fut", ("UST 10Y NOTE - CHICAGO BOARD OF TRADE", "10-YEAR U.S. TREASURY NOTES - CHICAGO BOARD OF TRADE", "10 YEAR U.S. TREASURY NOTES - CHICAGO BOARD OF TRADE"))
     """
     if report_type not in ["traders_in_financial_futures_fut", "traders_in_financial_futures_futopt"]:
