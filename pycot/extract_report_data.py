@@ -19,7 +19,7 @@ def get_cot_data() -> dict:
     """
     Extracts the Commitment of Traders Reports metadata.
     """
-    with open(BASE_PATH / "pycot/data/cot_reports_data.json", "r") as f:
+    with open(BASE_PATH / "data" / "cot_reports_data.json", "r") as f:
         return json.load(f)
 
 
@@ -27,7 +27,15 @@ def get_formating_data() -> dict:
     """
     Extracts the column formating data.
     """
-    with open(BASE_PATH / "pycot/data/format_columns.json", "r") as f:
+    with open(BASE_PATH / "data" / "format_columns.json", "r") as f:
+        return json.load(f)
+    
+    
+def get_contract_data() -> dict:
+    """
+    Extracts the contract data.
+    """
+    with open(BASE_PATH / "data" / "contract_names.json", "r") as f:
         return json.load(f)
 
 
