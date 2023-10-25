@@ -1,6 +1,6 @@
 # pycot
 
-[![PyPI Version](https://badge.fury.io/py/pycot-reports.svg)](https://badge.fury.io/py/pycot-reports)
+[![PyPI version](https://d25lcipzij17d.cloudfront.net/badge.svg?id=py&r=r&ts=1683906897&type=6e&v=0.0.7&x2=0)](https://badge.fury.io/py/pycot-reports)
 [![License: MIT](https://img.shields.io/badge/License-MIT-red.svg)](https://github.com/philsv/pycot/blob/main/LICENSE)
 [![Weekly Downloads](https://static.pepy.tech/personalized-badge/pycot-reports?period=week&units=international_system&left_color=grey&right_color=blue&left_text=downloads/week)](https://pepy.tech/project/pycot-reports)
 [![Monthly Downloads](https://static.pepy.tech/personalized-badge/pycot-reports?period=month&units=international_system&left_color=grey&right_color=blue&left_text=downloads/month)](https://pepy.tech/project/pycot-reports)
@@ -22,10 +22,28 @@ pip install pycot-reports
 ## How to use
 
 ```python
-from pycot.reports import legacy_report, disaggregated_report, financial_report
+from pycot import reports
+
+df = reports.legacy_report(report_type="legacy_fut", contract_name=("FED FUNDS - CHICAGO BOARD OF TRADE", "30-DAY FEDERAL FUNDS - CHICAGO BOARD OF TRADE"))
 ```
 
-Lets have a look at some examples.
+## How do I get cached results?
+
+If you want to retrieve data from the same report multiple times, you can use the `cot_report` function. This will cache the results of the previous function call.
+
+Lets have a look at an example:
+
+```python
+from pycot.reports import cot_report, legacy_report
+
+fed_funds_contract = ("FED FUNDS - CHICAGO BOARD OF TRADE", "30-DAY FEDERAL FUNDS - CHICAGO BOARD OF TRADE")
+fed_funds_df = cot_report(legacy_report(), fed_funds_contract)  # will load the full report (~ 10-15 seconds)
+
+bbg_contract = ("BBG COMMODITY - CHICAGO BOARD OF TRADE", "BLOOMBERG COMMODITY INDEX - CHICAGO BOARD OF TRADE")
+bbg_df = cot_report(legacy_report(), bbg_contract)  # cached, will not load the full report again
+```
+
+## Report Types
 
 ### Legacy Report (All Contracts)
 
