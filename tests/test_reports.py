@@ -1,5 +1,6 @@
 import time
 
+import numpy as np
 import pandas as pd
 import pytest
 
@@ -40,23 +41,44 @@ def test_individual_reports(report_type, contract_name):
 
 
 @pytest.mark.parametrize(
+    "report_type",
+    [
+        ("legacy_fut"),
+        ("disaggregated_futopt"),
+        ("traders_in_financial_futures_fut"),
+    ],
+)
+def test_list_available_contracts(report_type):
+    cot = CommitmentsOfTraders(report_type)
+    contracts = cot.list_available_contracts()
+    assert isinstance(contracts, np.ndarray)
+    assert len(contracts) > 0
+
+
+@pytest.mark.parametrize(
     "report_type, contract_1, contract_2",
     [
         (
             "legacy_fut",
-            ("FED FUNDS - CHICAGO BOARD OF TRADE", "30-DAY FEDERAL FUNDS - CHICAGO BOARD OF TRADE"),
-            ("BBG COMMODITY - CHICAGO BOARD OF TRADE", "BLOOMBERG COMMODITY INDEX - CHICAGO BOARD OF TRADE"),
+            (
+                "FED FUNDS - CHICAGO BOARD OF TRADE",
+                "30-DAY FEDERAL FUNDS - CHICAGO BOARD OF TRADE",
+            ),
+            (
+                "BBG COMMODITY - CHICAGO BOARD OF TRADE",
+                "BLOOMBERG COMMODITY INDEX - CHICAGO BOARD OF TRADE",
+            ),
         ),
     ],
 )
-def test_cot_report(report_type, contract_1, contract_2):    
+def test_cot_report(report_type, contract_1, contract_2):
     start_time_1 = time.perf_counter()
-    cot =  CommitmentsOfTraders(report_type)
-    df_1 =  cot.report(contract_1)
+    cot = CommitmentsOfTraders(report_type)
+    df_1 = cot.report(contract_1)
     end_time_1 = time.perf_counter() - start_time_1
 
     start_time_2 = time.perf_counter()
-    df_2 =  cot.report(contract_2)
+    df_2 = cot.report(contract_2)
     end_time_2 = time.perf_counter() - start_time_2
     assert end_time_1 > end_time_2
     assert isinstance(df_1, pd.DataFrame)

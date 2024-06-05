@@ -361,6 +361,44 @@ class CommitmentsOfTraders:
         df["Leveraged Money Short"] = df["Leveraged Money Short"] * -1
         df = df.sort_index()[::-1]
         return df
+    
+    def list_available_contracts(
+        self,
+    ) -> np.ndarray:
+        """
+        Lists all available contracts for a selected Commitment of Traders report.
+
+        Returns:
+            A pandas DataFrame with the available contracts for the selected report.
+
+        Example:
+            >>> from pycot.reports import CommitmentsOfTraders
+            >>> cot = CommitmentsOfTraders("legacy_fut")
+            >>> cot.list_available_contracts()
+            >>> ...
+            >>> cot.report(contract_name)
+        """
+        if self.report_type is None:
+            raise ValueError("Please select a report type to list available contracts")
+
+        if self.report_type in [
+            "legacy_fut",
+            "legacy_futopt",
+        ]:
+            df = self.legacy_report
+        elif self.report_type in [
+            "disaggregated_fut",
+            "disaggregated_futopt",
+        ]:
+            df = self.disaggregated_report
+        elif self.report_type in [
+            "traders_in_financial_futures_fut",
+            "traders_in_financial_futures_futopt",
+        ]:
+            df = self.financial_report
+        
+        available_contracts = df["Contract Name"].unique()
+        return np.sort(available_contracts)
 
     def report(
         self,

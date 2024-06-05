@@ -1,6 +1,6 @@
 # pycot
 
-[![PyPI version](https://d25lcipzij17d.cloudfront.net/badge.svg?id=py&r=r&ts=1683906897&type=6e&v=0.1.0&x2=0)](https://badge.fury.io/py/pycot-reports)
+[![PyPI version](https://d25lcipzij17d.cloudfront.net/badge.svg?id=py&r=r&ts=1683906897&type=6e&v=0.1.1&x2=0)](https://badge.fury.io/py/pycot-reports)
 [![License: MIT](https://img.shields.io/badge/License-MIT-red.svg)](https://github.com/philsv/pycot/blob/main/LICENSE)
 [![Weekly Downloads](https://static.pepy.tech/personalized-badge/pycot-reports?period=week&units=international_system&left_color=grey&right_color=blue&left_text=downloads/week)](https://pepy.tech/project/pycot-reports)
 [![Monthly Downloads](https://static.pepy.tech/personalized-badge/pycot-reports?period=month&units=international_system&left_color=grey&right_color=blue&left_text=downloads/month)](https://pepy.tech/project/pycot-reports)
@@ -135,13 +135,31 @@ Date                                                                           .
 ...
 ```
 
-## Contract Names
+## List Available Contracts
 
-The only tricky part is the contract name.
+```python
+from pycot.reports import CommitmentOfTraders
 
-You can find the contract name in the [CFTC Commitment of Traders](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm) reports. The contract name is the first column in the report.
+cot = CommitmentOfTraders("legacy_fut")
+contracts: np.ndarray = cot.list_available_contracts()
+```
 
-You can also find a curated list of contract names in the [contract_names.json](https://github.com/philsv/pycot/tree/main/pycot/data/contract_names.json)
+Output Example:
+
+```python
+array(['1-MONTH SOFR - CHICAGO MERCANTILE EXCHANGE',
+       '10 YEAR DELIVERABLE IR - CHICAGO BOARD OF TRADE',
+       '10 YEAR DELIVERABLE IR SWAP - CHICAGO BOARD OF TRADE',
+       '10 YEAR ERIS SOFR SWAP - CHICAGO BOARD OF TRADE',
+       '10 YEAR ERIS SWAP  - CHICAGO BOARD OF TRADE',
+       '10-YEAR U.S. TREASURY NOTES - CHICAGO BOARD OF TRADE',
+        ...
+       'UST 10Y NOTE - CHICAGO BOARD OF TRADE',
+       'UST 2Y NOTE - CHICAGO BOARD OF TRADE',
+       'UST 5Y NOTE - CHICAGO BOARD OF TRADE',
+       'UST BOND - CHICAGO BOARD OF TRADE',
+       'VIX FUTURES - CBOE FUTURES EXCHANGE'], dtype=object)
+```
 
 ## Release Shedule
 
