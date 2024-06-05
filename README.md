@@ -1,6 +1,6 @@
 # pycot
 
-[![PyPI version](https://d25lcipzij17d.cloudfront.net/badge.svg?id=py&r=r&ts=1683906897&type=6e&v=0.0.7&x2=0)](https://badge.fury.io/py/pycot-reports)
+[![PyPI version](https://d25lcipzij17d.cloudfront.net/badge.svg?id=py&r=r&ts=1683906897&type=6e&v=0.1.0&x2=0)](https://badge.fury.io/py/pycot-reports)
 [![License: MIT](https://img.shields.io/badge/License-MIT-red.svg)](https://github.com/philsv/pycot/blob/main/LICENSE)
 [![Weekly Downloads](https://static.pepy.tech/personalized-badge/pycot-reports?period=week&units=international_system&left_color=grey&right_color=blue&left_text=downloads/week)](https://pepy.tech/project/pycot-reports)
 [![Monthly Downloads](https://static.pepy.tech/personalized-badge/pycot-reports?period=month&units=international_system&left_color=grey&right_color=blue&left_text=downloads/month)](https://pepy.tech/project/pycot-reports)
@@ -22,9 +22,10 @@ pip install pycot-reports
 ## How to use
 
 ```python
-from pycot import reports
+from pycot.reports import CommitmentOfTraders
 
-df = reports.legacy_report(report_type="legacy_fut", contract_name=("FED FUNDS - CHICAGO BOARD OF TRADE", "30-DAY FEDERAL FUNDS - CHICAGO BOARD OF TRADE"))
+cot = CommitmentOfTraders("legacy_fut")
+df = cot.report(("FED FUNDS - CHICAGO BOARD OF TRADE", "30-DAY FEDERAL FUNDS - CHICAGO BOARD OF TRADE"))
 ```
 
 ## How do I get cached results?
@@ -34,13 +35,15 @@ If you want to retrieve data from the same report multiple times, you can use th
 Lets have a look at an example:
 
 ```python
-from pycot.reports import cot_report, legacy_report
+from pycot.reports import CommitmentOfTraders
 
-fed_funds_contract = ("FED FUNDS - CHICAGO BOARD OF TRADE", "30-DAY FEDERAL FUNDS - CHICAGO BOARD OF TRADE")
-fed_funds_df = cot_report(legacy_report(), fed_funds_contract)  # will load the full report (~ 10-15 seconds)
+cot = CommitmentOfTraders("legacy_fut")
 
-bbg_contract = ("BBG COMMODITY - CHICAGO BOARD OF TRADE", "BLOOMBERG COMMODITY INDEX - CHICAGO BOARD OF TRADE")
-bbg_df = cot_report(legacy_report(), bbg_contract)  # cached, will not load the full report again
+# will load the full report (~ 10-20 seconds)
+fed_funds_df = cot.report(("FED FUNDS - CHICAGO BOARD OF TRADE", "30-DAY FEDERAL FUNDS - CHICAGO BOARD OF TRADE"))
+
+# cached, will load instantly
+bbg_df = cot.report(("BBG COMMODITY - CHICAGO BOARD OF TRADE", "BLOOMBERG COMMODITY INDEX - CHICAGO BOARD OF TRADE"))
 ```
 
 ## Report Types
@@ -48,9 +51,11 @@ bbg_df = cot_report(legacy_report(), bbg_contract)  # cached, will not load the 
 ### Legacy Report (All Contracts)
 
 ```python
-from pycot.reports import legacy_report
-contract_name = ("FED FUNDS - CHICAGO BOARD OF TRADE", "30-DAY FEDERAL FUNDS - CHICAGO BOARD OF TRADE")
-df = legacy_report("legacy_fut", contract_name)
+from pycot.reports import CommitmentOfTraders
+
+cot = CommitmentOfTraders("legacy_fut")
+contract_names = ("FED FUNDS - CHICAGO BOARD OF TRADE", "30-DAY FEDERAL FUNDS - CHICAGO BOARD OF TRADE")
+df = cot.cot_report(contract_names)
 ```
 
 Output Example:
@@ -75,9 +80,11 @@ Date                                                                      ...
 ### Disaggregated Report (Commodities)
 
 ```python
-from pycot.reports import disaggregated_report
-contract_name = ("BRENT LAST DAY - NEW YORK MERCANTILE EXCHANGE", "BRENT CRUDE OIL LAST DAY - NEW YORK MERCANTILE EXCHANGE")
-df = disaggregated_report("disaggregated_futopt", contract_name)
+from pycot.reports import CommitmentOfTraders
+
+cot = CommitmentOfTraders("disaggregated_futopt")
+contract_names = ("BRENT LAST DAY - NEW YORK MERCANTILE EXCHANGE", "BRENT CRUDE OIL LAST DAY - NEW YORK MERCANTILE EXCHANGE")
+df = cot.report(contract_names)
 ```
 
 Output Example:
@@ -102,9 +109,11 @@ Date                                                                           .
 ### Financial Report (Financial Instruments)
 
 ```python
-from pycot.reports import financial_report
-contract_name = ("UST 10Y NOTE - CHICAGO BOARD OF TRADE", "10-YEAR U.S. TREASURY NOTES - CHICAGO BOARD OF TRADE", "10 YEAR U.S. TREASURY NOTES - CHICAGO BOARD OF TRADE")
-df = financial_report("traders_in_financial_futures_fut", contract_name)
+from pycot.reports import CommitmentOfTraders
+
+cot = CommitmentOfTraders("traders_in_financial_futures_fut")
+contract_names = ("UST 10Y NOTE - CHICAGO BOARD OF TRADE", "10-YEAR U.S. TREASURY NOTES - CHICAGO BOARD OF TRADE", "10 YEAR U.S. TREASURY NOTES - CHICAGO BOARD OF TRADE")
+df = cot.report(contract_names)
 ```
 
 Output Example:

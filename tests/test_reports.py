@@ -3,11 +3,11 @@ import time
 import pandas as pd
 import pytest
 
-from pycot import reports
+from pycot.reports import CommitmentsOfTraders
 
 
 @pytest.mark.parametrize(
-    "report_type,contract_name",
+    "report_type, contract_name",
     [
         (
             "legacy_fut",
@@ -16,16 +16,6 @@ from pycot import reports
                 "30-DAY FEDERAL FUNDS - CHICAGO BOARD OF TRADE",
             ),
         ),
-    ],
-)
-def test_legacy_report(report_type, contract_name):
-    df = reports.legacy_report(report_type, contract_name)
-    assert isinstance(df, pd.DataFrame)
-
-
-@pytest.mark.parametrize(
-    "report_type,contract_name",
-    [
         (
             "disaggregated_futopt",
             (
@@ -33,16 +23,6 @@ def test_legacy_report(report_type, contract_name):
                 "BRENT CRUDE OIL LAST DAY - NEW YORK MERCANTILE EXCHANGE",
             ),
         ),
-    ],
-)
-def test_disaggregated_report(report_type, contract_name):
-    df = reports.disaggregated_report(report_type, contract_name)
-    assert isinstance(df, pd.DataFrame)
-
-
-@pytest.mark.parametrize(
-    "report_type,contract_name",
-    [
         (
             "traders_in_financial_futures_fut",
             (
@@ -53,29 +33,31 @@ def test_disaggregated_report(report_type, contract_name):
         ),
     ],
 )
-def test_financial_report(report_type, contract_name):
-    df = reports.financial_report(report_type, contract_name)
+def test_individual_reports(report_type, contract_name):
+    cot = CommitmentsOfTraders(report_type)
+    df = cot.report(contract_name)
     assert isinstance(df, pd.DataFrame)
 
 
 @pytest.mark.parametrize(
-    "contract_1,contract_2",
+    "report_type, contract_1, contract_2",
     [
         (
+            "legacy_fut",
             ("FED FUNDS - CHICAGO BOARD OF TRADE", "30-DAY FEDERAL FUNDS - CHICAGO BOARD OF TRADE"),
             ("BBG COMMODITY - CHICAGO BOARD OF TRADE", "BLOOMBERG COMMODITY INDEX - CHICAGO BOARD OF TRADE"),
         ),
     ],
 )
-def test_cot_report(contract_1, contract_2):
+def test_cot_report(report_type, contract_1, contract_2):    
     start_time_1 = time.perf_counter()
-    df_1 = reports.cot_report(reports.legacy_report(), contract_1)
+    cot =  CommitmentsOfTraders(report_type)
+    df_1 =  cot.report(contract_1)
     end_time_1 = time.perf_counter() - start_time_1
 
     start_time_2 = time.perf_counter()
-    df_2 = reports.cot_report(reports.legacy_report(), contract_2)
+    df_2 =  cot.report(contract_2)
     end_time_2 = time.perf_counter() - start_time_2
-
     assert end_time_1 > end_time_2
     assert isinstance(df_1, pd.DataFrame)
     assert isinstance(df_2, pd.DataFrame)
