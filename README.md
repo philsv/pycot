@@ -30,7 +30,7 @@ df = cot.report(("FED FUNDS - CHICAGO BOARD OF TRADE", "30-DAY FEDERAL FUNDS - C
 
 ## How do I get cached results?
 
-If you want to retrieve data from the same report multiple times, you can use the `cot_report` function. This will cache the results of the previous function call.
+If you want to retrieve data from the same report multiple times, you can use the `report` function. This will cache the results of the previous function call.
 
 Lets have a look at an example:
 
@@ -62,7 +62,7 @@ Output Example:
 
 ```ini
                                             Contract Name  Open Interest  ...  Net Change, Large Spec  Net % of OI, Large Spec
-Date                                                                      ...                                                                                                                                    
+Date                                                                      ...                                                                                                                                  
 2023-07-11             FED FUNDS - CHICAGO BOARD OF TRADE      1440370.0  ...                -58101.0                    -11.5
 2023-07-03             FED FUNDS - CHICAGO BOARD OF TRADE      1414525.0  ...                -17553.0                     -7.5
 2023-06-27             FED FUNDS - CHICAGO BOARD OF TRADE      1746984.0  ...                 12437.0                     -5.1
@@ -91,7 +91,7 @@ Output Example:
 
 ```ini
                                                 Contract Name  Open Interest   ...  Net Change Managed Money  Net % of OI Managed Money
-Date                                                                           ...                                                                                                                              
+Date                                                                           ...                                                                                                                            
 2023-07-11      BRENT LAST DAY - NEW YORK MERCANTILE EXCHANGE       138358.0   ...                  -2134.0                        -2.9
 2023-07-03      BRENT LAST DAY - NEW YORK MERCANTILE EXCHANGE       130715.0   ...                   9436.0                        -1.4
 2023-06-27      BRENT LAST DAY - NEW YORK MERCANTILE EXCHANGE       153190.0   ...                  -6135.0                        -7.4
@@ -120,7 +120,7 @@ Output Example:
 
 ```ini
                                                 Contract Name  Open Interest   ...  Net Change Lev Money  Net % of OI Lev Money
-Date                                                                           ...                                                                                          
+Date                                                                           ...                                                                                        
 2023-07-11              UST 10Y NOTE - CHICAGO BOARD OF TRADE      4800091.0   ...              155532.0                  -26.8
 2023-07-03              UST 10Y NOTE - CHICAGO BOARD OF TRADE      4737762.0   ...                7710.0                  -30.4
 2023-06-27              UST 10Y NOTE - CHICAGO BOARD OF TRADE      4663919.0   ...              -51457.0                  -31.1
