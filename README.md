@@ -1,6 +1,6 @@
 # pycot
 
-[![PyPI version](https://d25lcipzij17d.cloudfront.net/badge.svg?id=py&r=r&ts=1683906897&type=6e&v=0.1.1&x2=0)](https://badge.fury.io/py/pycot-reports)
+[![PyPI version](https://d25lcipzij17d.cloudfront.net/badge.svg?id=py&r=r&ts=1683906897&type=6e&v=0.1.2&x2=0)](https://badge.fury.io/py/pycot-reports)
 [![License: MIT](https://img.shields.io/badge/License-MIT-red.svg)](https://github.com/philsv/pycot/blob/main/LICENSE)
 [![Weekly Downloads](https://static.pepy.tech/personalized-badge/pycot-reports?period=week&units=international_system&left_color=grey&right_color=blue&left_text=downloads/week)](https://pepy.tech/project/pycot-reports)
 [![Monthly Downloads](https://static.pepy.tech/personalized-badge/pycot-reports?period=month&units=international_system&left_color=grey&right_color=blue&left_text=downloads/month)](https://pepy.tech/project/pycot-reports)

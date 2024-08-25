@@ -35,6 +35,7 @@ from pycot.reports import CommitmentsOfTraders
     ],
 )
 def test_individual_reports(report_type, contract_name):
+    """Test the individual reports."""
     cot = CommitmentsOfTraders(report_type)
     df = cot.report(contract_name)
     assert isinstance(df, pd.DataFrame)
@@ -49,6 +50,7 @@ def test_individual_reports(report_type, contract_name):
     ],
 )
 def test_list_available_contracts(report_type):
+    """Test the list_available_contracts function."""
     cot = CommitmentsOfTraders(report_type)
     contracts = cot.list_available_contracts()
     assert isinstance(contracts, np.ndarray)
@@ -72,6 +74,7 @@ def test_list_available_contracts(report_type):
     ],
 )
 def test_cot_report(report_type, contract_1, contract_2):
+    """Test the cot report function to retrieve data from the same report multiple times."""
     start_time_1 = time.perf_counter()
     cot = CommitmentsOfTraders(report_type)
     df_1 = cot.report(contract_1)

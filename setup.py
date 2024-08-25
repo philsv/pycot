@@ -16,6 +16,7 @@ setuptools.setup(
     license="MIT",
     author="philsv",
     author_email="frphsv@gmail.com",
+    description="Python Library for interacting with the CFTC Commitment of Traders reports.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     keywords=["commitment of traders", "cot data", "cftc", "python"],

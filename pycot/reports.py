@@ -23,12 +23,9 @@ def format_dataframe(
     names: Union[list, tuple],
     columns: Union[list, tuple],
 ) -> pd.DataFrame:
-    """
-    Helper function to format the data retrieved from the CFTC website.
-    """
-    df = data.reindex(
-        columns=columns
-    )  # Limit the columns to the ones we need (please adjust to your liking in format_columns.json)
+    """Helper function to format the data retrieved from the CFTC website."""
+    # Limit the columns to the ones we need (can be adjusted in format_columns.json)
+    df = data.reindex(columns=columns)
     df = df.rename(columns=dict(zip(columns, names)))
     df["Date"] = pd.to_datetime(df["Date"])
     df = df.set_index(["Date", "Contract Name"])
@@ -43,9 +40,7 @@ def get_contract(
     df: pd.DataFrame,
     contract_name: Union[str, tuple],
 ) -> pd.DataFrame:
-    """
-    Retrieves the Commitment of Traders Reports data for a specific contract or list of contracts.
-    """
+    """Retrieves the Commitment of Traders Reports data for a specific contract or list of contracts."""
     if isinstance(contract_name, str):
         return df[df["Contract Name"] == contract_name]
 
@@ -97,9 +92,7 @@ class CommitmentsOfTraders:
         response: requests.models.Response,
         text_file: str,
     ) -> pd.DataFrame:
-        """
-        Unzips the text file from an archive and returns a pandas DataFrame.
-        """
+        """Unzips the text file from an archive and returns a pandas DataFrame."""
         with tempfile.TemporaryDirectory() as tmpdirname:
             zip_path = os.path.join(tmpdirname, "archive.zip")
 
@@ -361,7 +354,7 @@ class CommitmentsOfTraders:
         df["Leveraged Money Short"] = df["Leveraged Money Short"] * -1
         df = df.sort_index()[::-1]
         return df
-    
+
     def list_available_contracts(
         self,
     ) -> np.ndarray:
@@ -396,7 +389,7 @@ class CommitmentsOfTraders:
             "traders_in_financial_futures_futopt",
         ]:
             df = self.financial_report
-        
+
         available_contracts = df["Contract Name"].unique()
         return np.sort(available_contracts)
 
