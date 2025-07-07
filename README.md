@@ -22,9 +22,9 @@ pip install pycot-reports
 ## How to use
 
 ```python
-from pycot.reports import CommitmentOfTraders
+from pycot.reports import CommitmentsOfTraders
 
-cot = CommitmentOfTraders("legacy_fut")
+cot = CommitmentsOfTraders("legacy_fut")
 df = cot.report(("FED FUNDS - CHICAGO BOARD OF TRADE", "30-DAY FEDERAL FUNDS - CHICAGO BOARD OF TRADE"))
 ```
 
@@ -35,9 +35,9 @@ If you want to retrieve data from the same report multiple times, you can use th
 Lets have a look at an example:
 
 ```python
-from pycot.reports import CommitmentOfTraders
+from pycot.reports import CommitmentsOfTraders
 
-cot = CommitmentOfTraders("legacy_fut")
+cot = CommitmentsOfTraders("legacy_fut")
 
 # will load the full report (~ 10-20 seconds)
 fed_funds_df = cot.report(("FED FUNDS - CHICAGO BOARD OF TRADE", "30-DAY FEDERAL FUNDS - CHICAGO BOARD OF TRADE"))
@@ -51,9 +51,9 @@ bbg_df = cot.report(("BBG COMMODITY - CHICAGO BOARD OF TRADE", "BLOOMBERG COMMOD
 ### Legacy Report (All Contracts)
 
 ```python
-from pycot.reports import CommitmentOfTraders
+from pycot.reports import CommitmentsOfTraders
 
-cot = CommitmentOfTraders("legacy_fut")
+cot = CommitmentsOfTraders("legacy_fut")
 contract_names = ("FED FUNDS - CHICAGO BOARD OF TRADE", "30-DAY FEDERAL FUNDS - CHICAGO BOARD OF TRADE")
 df = cot.report(contract_names)
 ```
@@ -80,9 +80,9 @@ Date                                                                      ...
 ### Disaggregated Report (Commodities)
 
 ```python
-from pycot.reports import CommitmentOfTraders
+from pycot.reports import CommitmentsOfTraders
 
-cot = CommitmentOfTraders("disaggregated_futopt")
+cot = CommitmentsOfTraders("disaggregated_futopt")
 contract_names = ("BRENT LAST DAY - NEW YORK MERCANTILE EXCHANGE", "BRENT CRUDE OIL LAST DAY - NEW YORK MERCANTILE EXCHANGE")
 df = cot.report(contract_names)
 ```
@@ -109,9 +109,9 @@ Date                                                                           .
 ### Financial Report (Financial Instruments)
 
 ```python
-from pycot.reports import CommitmentOfTraders
+from pycot.reports import CommitmentsOfTraders
 
-cot = CommitmentOfTraders("traders_in_financial_futures_fut")
+cot = CommitmentsOfTraders("traders_in_financial_futures_fut")
 contract_names = ("UST 10Y NOTE - CHICAGO BOARD OF TRADE", "10-YEAR U.S. TREASURY NOTES - CHICAGO BOARD OF TRADE", "10 YEAR U.S. TREASURY NOTES - CHICAGO BOARD OF TRADE")
 df = cot.report(contract_names)
 ```
@@ -138,9 +138,9 @@ Date                                                                           .
 ## List Available Contracts
 
 ```python
-from pycot.reports import CommitmentOfTraders
+from pycot.reports import CommitmentsOfTraders
 
-cot = CommitmentOfTraders("legacy_fut")
+cot = CommitmentsOfTraders("legacy_fut")
 contracts: np.ndarray = cot.list_available_contracts()
 ```
 
